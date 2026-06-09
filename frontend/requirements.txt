@@ -1,0 +1,5 @@
+# Streamlit Frontend
+streamlit==1.35.0
+streamlit-authenticator==0.3.3
+requests==2.32.3
+httpx==0.27.0
