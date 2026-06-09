@@ -1,10 +1,16 @@
-"""
-frontend/api_client.py – Thin async-friendly HTTP client wrapping the FastAPI backend
-"""
+
+import os
 import requests
 from typing import Optional
+from dotenv import load_dotenv
 
-BASE_URL = "http://localhost:8000/api/v1"
+load_dotenv()
+
+BASE_URL = os.getenv("BACKEND_URL")
+
+if not BASE_URL:
+    raise ValueError("BACKEND_URL is not set in environment variables")
+
 
 
 class APIClient:
