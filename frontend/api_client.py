@@ -1,17 +1,18 @@
-
 import os
 import requests
 from typing import Optional
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_URL = os.getenv("BACKEND_URL")
+BASE_URL = st.secrets.get(
+    "BACKEND_URL",
+    os.getenv("BACKEND_URL")
+)
 
 if not BASE_URL:
-    raise ValueError("BACKEND_URL is not set in environment variables")
-
-
+    raise ValueError("BACKEND_URL is not configured")
 
 class APIClient:
     def __init__(self, access_token: Optional[str] = None):
